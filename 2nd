@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct proc
+{
+	int id;
+int arrival;
+int burst;
+int rem;
+int wait;
+int finish;
+int turnaround;
+float ratio;
+}process[10]; 
+struct proc temp;
+int no;
+
+int chkprocess(int);
+int nextprocess();
+void roundrobin(int, int, int[], int[]);
+void srtf(int);
+
+main()
+{
+	int n,tq,choice; 
+int bt[10],st[10],i,j,k;
+	for(; ;)
+	{
+	printf("Enter the choice \n");
+	printf(" 1. Round Robin\n 2. SRT\n 3. Exit \n");
+	scanf("%d",&choice);
+	switch(choice)
+	{
+	case 1:
+	printf("Round Robin scheduling algorithm\n");
+	printf("Enter number of processes:\n");
+	scanf("%d",&n);
+	printf("Enter burst time for sequences:");
+	for(i=0;i<n;i++)
+	{
+	scanf("%d",&bt[i]);
+	st[i]=bt[i];	//service time
+	}
+	printf("Enter time quantum:");
+	scanf("%d",&tq);
+	roundrobin(n,tq,st,bt);
+break;
